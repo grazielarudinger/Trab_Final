@@ -1,0 +1,32 @@
+<!-- templates/result.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultados da Classificação</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body class="bg-light">
+
+    <div class="container mt-5">
+        <h1 class="mb-4">Resultados da Classificação</h1>
+
+        <div class="alert alert-info">
+            <p><strong>Classificador:</strong> {{ classifier }}</p>
+            <p><strong>Acurácia:</strong> {{ accuracy }}</p>
+            <p><strong>F1 Score:</strong> {{ f1_score }}</p>
+        </div>
+
+        <img src="data:image/png;base64,{{ img_data }}" alt="Confusion Matrix" class="img-fluid mb-3">
+
+               <!-- Adicionando um botão de download -->
+               <form action="/download_results" method="post">
+                <input type="hidden" name="csv_path" value="{{ csv_path }}">
+                <button type="submit" class="btn btn-success">Baixar Resultados (CSV)</button>
+            </form>
+        </div>
+    
+    </body>
+    </html>
+    
